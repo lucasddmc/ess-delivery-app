@@ -52,3 +52,11 @@ Given Um usuário cadastrado no sistema com id “3”
 When Eu faço uma requisição POST para a rota “/usuario/3/pagamento” com Numero “************4823”, com o CVV “X”,  Data de Validade “Y” e nome do titular “Maria Kenderessy”
 Then Eu recebo uma resposta 200
 And A resposta JSON deve conter “Cartão Cadastrado”
+
+Scenario: Atualização do Método de Pagamento Padrão
+Given Eu estou no menu “Formas de pagamento”
+And O usuário de username “clara_abk” tem múltiplos cartões cadastrados, incluindo o cartão com número “************4823”
+When Eu seleciono o cartão com número “************4823” como método de pagamento padrão
+And Eu clico em “Definir como Padrão”
+Then Eu vejo uma mensagem de confirmação indicando que o método de pagamento padrão foi atualizado
+And O cartão com número “************4823” é exibido como o método de pagamento padrão na lista de cartões cadastrados
