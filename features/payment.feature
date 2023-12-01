@@ -52,3 +52,4 @@ Given Um usuário cadastrado no sistema com id “3”
 When Eu faço uma requisição POST para a rota “/usuario/3/pagamento” com Numero “************4823”, com o CVV “X”,  Data de Validade “Y” e nome do titular “Maria Kenderessy”
 Then Eu recebo uma resposta 200
 And A resposta JSON deve conter “Cartão Cadastrado”
+And *
