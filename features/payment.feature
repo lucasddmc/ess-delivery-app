@@ -7,6 +7,14 @@ validade “Y” e nome do titular “Maria Kenderessy”
 Then Eu vejo uma mensagem de confirmação
 And Eu vejo os últimos 4 números “4729” na lista de cartões cadastrados
 
+Scenario: Falha ao Adicionar um Novo Cartão com Dados Inválidos
+Given Eu estou no menu “Formas de pagamento”
+And O usuário de username “clara_abk” não tem o cartão com número “************4729” cadastrado
+When Eu clico em “Adicionar novo cartão”
+And Eu cadastro o cartão com número inválido “1234567890123456”, CVV “XYZ”, data de validade “32/13/9999” e nome do titular “Maria Kenderessy”
+Then Eu vejo uma mensagem de erro indicando dados inválidos do cartão
+And O cartão não é adicionado à lista de cartões cadastrados
+
 Scenario: Excluir um Cartão
 Given Eu estou no menu “Formas de pagamento”
 And O usuário de username “clara_abk” tem o cartão com número “************4823” cadastrado
