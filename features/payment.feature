@@ -14,6 +14,13 @@ When Eu clico em “Excluir” para o cartão com número “************4823”
 Then Eu vejo uma mensagem de confirmação para a exclusão do cartão
 And O cartão com número “************4823” não está mais na lista de cartões cadastrados
 
+Scenario: Falha ao Excluir um Cartão Não Cadastrado
+Given Eu estou no menu “Formas de pagamento”
+And O usuário de username “clara_abk” não tem o cartão com número “************4823” cadastrado
+When Eu tento excluir um cartão com número “************4823”
+Then Eu vejo uma mensagem de erro indicando que o cartão não está cadastrado
+And Nenhuma mudança é feita na lista de cartões cadastrados
+
 Scenario: Cadastrar um Novo Cupom
 Given Eu estou no menu “Cupons de Desconto”
 And O usuário de username “clara_abk” não tem o cupom com código “DESC10” cadastrado
