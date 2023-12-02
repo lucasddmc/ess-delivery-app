@@ -52,7 +52,7 @@ Given Um usuário cadastrado no sistema com id “3”
 When Eu faço uma requisição POST para a rota “/usuario/3/pagamento” com Numero “************4823”, com o CVV “X”,  Data de Validade “Y” e nome do titular “Maria Kenderessy”
 Then Eu recebo uma resposta 200
 And A resposta JSON deve conter “Cartão Cadastrado”
-..
+
 Scenario: Atualização do Método de Pagamento Padrão
 Given Eu estou no menu “Formas de pagamento”
 And O usuário de username “clara_abk” tem múltiplos cartões cadastrados, incluindo o cartão com número “************4823”
@@ -60,7 +60,7 @@ When Eu seleciono o cartão com número “************4823” como método de p
 And Eu clico em “Definir como Padrão”
 Then Eu vejo uma mensagem de confirmação indicando que o método de pagamento padrão foi atualizado
 And O cartão com número “************4823” é exibido como o método de pagamento padrão na lista de cartões cadastrados
-...
+
 Scenario: Atualização de Dados de um Cartão Cadastrado
 Given Eu estou no menu “Formas de pagamento”
 And O usuário de username “clara_abk” tem o cartão com número “************4823” cadastrado
@@ -68,4 +68,12 @@ When Eu clico em “Editar” para o cartão com número “************4823”
 And Eu atualizo o CVV para “XYZ”, a data de validade para “12/25” e o nome do titular para “Clara ABK”
 Then Eu vejo uma mensagem de confirmação de atualização dos dados do cartão
 And Ao visualizar os detalhes do cartão “************4823”, vejo as informações atualizadas conforme alteradas
-.
+
+Scenario: Falha ao Cadastrar Cupom Expirado
+Given Eu estou no menu “Cupons de Desconto”
+And O usuário de username “clara_abk” não tem o cupom com código “DESC20” cadastrado
+And O cupom “DESC20” está expirado
+When Eu clico em “Adicionar novo cupom”
+And Eu tento cadastrar o cupom com código “DESC20” e percentual de desconto “20%”
+Then Eu vejo uma mensagem de erro indicando que o cupom está expirado
+And O cupom com código “DESC20” não é adicionado à lista de cupons
