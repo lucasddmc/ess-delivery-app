@@ -68,3 +68,4 @@ When Eu clico em “Editar” para o cartão com número “************4823”
 And Eu atualizo o CVV para “XYZ”, a data de validade para “12/25” e o nome do titular para “Clara ABK”
 Then Eu vejo uma mensagem de confirmação de atualização dos dados do cartão
 And Ao visualizar os detalhes do cartão “************4823”, vejo as informações atualizadas conforme alteradas
+.
