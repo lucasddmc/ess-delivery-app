@@ -60,7 +60,7 @@ When Eu seleciono o cartão com número “************4823” como método de p
 And Eu clico em “Definir como Padrão”
 Then Eu vejo uma mensagem de confirmação indicando que o método de pagamento padrão foi atualizado
 And O cartão com número “************4823” é exibido como o método de pagamento padrão na lista de cartões cadastrados
-
+...
 Scenario: Atualização de Dados de um Cartão Cadastrado
 Given Eu estou no menu “Formas de pagamento”
 And O usuário de username “clara_abk” tem o cartão com número “************4823” cadastrado
